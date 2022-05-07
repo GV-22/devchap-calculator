@@ -1,5 +1,5 @@
-import 'package:calculator/models/pad_item.dart';
-import 'package:calculator/utils/event.dart';
+import '../models/pad_item.dart';
+import '../utils/event.dart';
 import 'package:flutter/material.dart';
 
 class Pad extends StatelessWidget {

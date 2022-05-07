@@ -1,5 +1,5 @@
-import 'package:calculator/providers/theme_provider.dart';
-import 'package:calculator/screens/calculator_screen.dart';
+import 'providers/theme_provider.dart';
+import 'screens/calculator_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

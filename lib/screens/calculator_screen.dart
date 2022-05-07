@@ -1,8 +1,9 @@
-import 'package:calculator/models/pad_item.dart';
-import 'package:calculator/widgets/pad.dart';
-import 'package:calculator/widgets/theme_switcher.dart';
-import 'package:calculator/widgets/viewer.dart';
 import 'package:flutter/material.dart';
+
+import '../models/pad_item.dart';
+import '../widgets/pad.dart';
+import '../widgets/theme_switcher.dart';
+import '../widgets/viewer.dart';
 
 class CalculatorScreen extends StatefulWidget {
   const CalculatorScreen({Key? key}) : super(key: key);

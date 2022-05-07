@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:calculator/models/pad_item.dart';
-import 'package:calculator/utils/event.dart';
+import '../models/pad_item.dart';
+import '../utils/event.dart';
 import 'package:expressions/expressions.dart';
 import 'package:flutter/material.dart';
 // import 'package:intl/intl.dart';

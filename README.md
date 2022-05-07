@@ -29,20 +29,40 @@ add images heres
 
   We are a team of passionnate developers with amazing skills and technologies. We build for you perfect mobile app, web app, website and api quickly as possible.
 
-# We build
+
+## Technologies
+
+  - HTML + CSS
+  - Vue Js
+  - Nuxt Js
+  - Kotlin
+  - Flutter
+  - Javascript
+  - Typescrit
+  - Python
+  - Rust
+  - MySQL
+  - MongoDb
+
+
+
+## We build
 
 ### Frontend with:
 
-- Vue Js
-- Nuxt Js
-- Tailwind
-- GSAP
+- [Vue Js](https://vuejs.org/)
+- [Nuxt Js](https://nuxtjs.org/)
+- [Tailwind](https://tailwindui.com/)
+- [GSAP](https://greensock.com/gsap/)
 
 ### API with:
 
-- Node Js (Javascript and Typescript)
-- Python (Flask, FastApi & Django)
+- [Node Js](https://nodejs.org/)
+- [Flask](https://flask.palletsprojects.com/en/2.1.x/)
+- [FastApi](https://fastapi.tiangolo.com/)
+- [Django](https://www.djangoproject.com/)
 - Database (MongoDb, SQlite, MySQL etc..)
+- [Strapi](https://strapi.io/)
 
 ### Mobile app with:
 
