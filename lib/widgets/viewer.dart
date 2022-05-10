@@ -4,7 +4,7 @@ import '../models/pad_item.dart';
 import '../utils/event.dart';
 import 'package:expressions/expressions.dart';
 import 'package:flutter/material.dart';
-// import 'package:intl/intl.dart';
+import 'package:intl/intl.dart';
 
 class Viewer extends StatefulWidget {
   const Viewer({Key? key}) : super(key: key);
@@ -18,7 +18,7 @@ class _ViewerState extends State<Viewer> {
   String calcul = "";
   String result = "";
   List<String> operators = ["+", "-", "×", "÷"];
-  final opRegx = RegExp('/+|÷|×|-');
+  final opRegx = RegExp(r'/+|÷|×|-');
 
   // Map<String, dynamic> operationResult = {};
 
@@ -44,19 +44,41 @@ class _ViewerState extends State<Viewer> {
     String exp = calcul;
     bool autoCompute = false;
     bool compute = false;
-    // split the expression by operators
-    final List<String> splitedByOp = exp.split(opRegx);
 
     switch (padItem.type) {
       case PadType.number:
+        if (padItem.label == ".") {
+          exp = "$exp${padItem.label}";
+
+          break;
+        }
+        // split the expression by operators
+        List<String> splitedByOp = exp.split(opRegx);
         // the maximum length of each operand is 15,
         // Eg: A+B, A and B cannot be bigger than 1.10e14
-        print("splitedByOp $splitedByOp");
         if (splitedByOp.last.length == 15) return;
         // auto compute operation without waiting the user to click on equality button
         if (splitedByOp.length != 1) autoCompute = true;
 
-        exp = "$exp${padItem.label}";
+        final tempExp = "$exp${padItem.label}";
+        // split again with the new value
+        splitedByOp = tempExp.split(opRegx);
+        print("splitedByOp $splitedByOp");
+        // because the last part is a string, we need to format it in num
+        // and then we can format the num to string
+        final lastAsNum = _formatStringToNum(splitedByOp.last);
+        final String formated = _formatNumToString(lastAsNum);
+
+        if (splitedByOp.length == 1) {
+          exp = formated;
+        } else {
+          final lastLength = splitedByOp.last.length;
+          // remove the last part of the expression (to part to be formated)
+          exp = exp.replaceRange(exp.length - lastLength + 1, null, '');
+
+          exp = "$exp$formated";
+        }
+
         break;
 
       case PadType.percentage:
@@ -122,6 +144,10 @@ class _ViewerState extends State<Viewer> {
     String _formatedExp = exp.replaceAll("×", "*");
     _formatedExp = _formatedExp.replaceAll("%", "*0.01");
     _formatedExp = _formatedExp.replaceAll("÷", "/");
+    // replace english thousand separator
+    _formatedExp = _formatedExp.replaceAll(",", "");
+    // replace french thousand separator
+    _formatedExp = _formatedExp.replaceAll(" ", "");
 
     // print("exp '$exp' ====> formated '$_formatedExp'");
     Expression? expression = Expression.tryParse(_formatedExp);
@@ -135,7 +161,7 @@ class _ViewerState extends State<Viewer> {
     const evaluator = ExpressionEvaluator();
     final _result = evaluator.eval(expression, expContext);
 
-    print("result: $_result, result is: ${_result.runtimeType}");
+    // print("result: $_result, result is: ${_result.runtimeType}");
 
     if (_result is double && _result.isInfinite) {
       return "impossible de diviser par zéro";
@@ -148,13 +174,35 @@ class _ViewerState extends State<Viewer> {
     return num.tryParse(value) != null;
   }
 
-  // String _formatValue(String value) {
-  //   final formated = NumberFormat.decimalPattern().format(num.parse(value));
-  //   // final test = NumberFormat.decimalPattern().format(double.parse("88888x8888"));
-  //   print("intlNumberParse $formated");
+  String _formatNumToString(num value) {
+    final formated = NumberFormat.decimalPattern().format(value);
+    // print("_formatNumToString $formated");
 
-  //   return formated;
-  // }
+    return formated;
+  }
+
+  num _formatStringToNum(String value) {
+    final formated = NumberFormat().parse(value);
+    // print("_formatStringToNum $formated");
+
+    return formated;
+  }
+
+  String _formatResult(String result) {
+    final split = result.split("e");
+    final firstpart = _formatStringToNum(split[0]);
+
+    // String _formated = ""; // FIXME
+
+    // reduce the decimal part
+    // if ((NumberFormat("$firstpart").decimalDigits ?? 0) > 8) {
+    //   _formated = firstpart.toStringAsFixed(8);
+    // }
+
+    if (split.length == 1) return "$firstpart";
+
+    return "$firstpart" "e${split[1]}";
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -173,7 +221,7 @@ class _ViewerState extends State<Viewer> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              result, // TODO format the value with thousand seperator
+              isValid ? _formatResult(result) : result,
               textAlign: TextAlign.end,
               style: TextStyle(
                 color: isValid
