@@ -7,8 +7,10 @@ A simple calculator with basic features for the _#7SEVENDAYSCHALLENGE_ enhanced 
 ## Getting Started :rocket:
 
 - Clone the repo
-- Install the dependicies
+- Install the dependencies
 - Run it
+
+> Note: You can download the attached release apk.
 
 ## Requirements :computer:
 
@@ -18,85 +20,31 @@ A simple calculator with basic features for the _#7SEVENDAYSCHALLENGE_ enhanced 
 
 ## Screenshots 📸
 
-add images heres
+- Light Mode
+
+|                |                         |                      |
+|----------------|-------------------------------|-----------------------------|
+|![](./screenshots/light-1.png)|![](./screenshots/light-2.png)|![](./screenshots/light-3.png)            |
+
+- Dark Mode
+
+|                |                         |                      |
+|----------------|-------------------------------|-----------------------------|
+|![](./screenshots/dark-1.png)|![](./screenshots/dark-2.png)|![](./screenshots/dark-3.png)            |
+
+
+
+## Todo
+- Fix bug with addition operator
+- Format the result with thousand separator
 
 ## About the #7SEVENDAYSCHALLENGE
 
   The challenge is to build an app using a free design chosen on dribble, uplab or behance. Each app will follow a concept such as theming, glassmorphing, animations etc...
   We build two versions of each  app: The flutter version and the native android with kotlin version
 
-# About DevChap
+
+## DEVCHAP
 
   We are a team of passionnate developers with amazing skills and technologies. We build for you perfect mobile app, web app, website and api quickly as possible.
-
-
-## Technologies
-
-  - HTML + CSS
-  - Vue Js
-  - Nuxt Js
-  - Kotlin
-  - Flutter
-  - Javascript
-  - Typescrit
-  - Python
-  - Rust
-  - MySQL
-  - MongoDb
-
-
-
-## We build
-
-### Frontend with:
-
-- [Vue Js](https://vuejs.org/)
-- [Nuxt Js](https://nuxtjs.org/)
-- [Tailwind](https://tailwindui.com/)
-- [GSAP](https://greensock.com/gsap/)
-
-### API with:
-
-- [Node Js](https://nodejs.org/)
-- [Flask](https://flask.palletsprojects.com/en/2.1.x/)
-- [FastApi](https://fastapi.tiangolo.com/)
-- [Django](https://www.djangoproject.com/)
-- Database (MongoDb, SQlite, MySQL etc..)
-- [Strapi](https://strapi.io/)
-
-### Mobile app with:
-
-- Flutter
-- Android native & Kotlin
-
-## Team members
-
-- Gilles Kidjo: Full stack web developer and mobile
-  > connect with him  
-   <a href="https://www.linkedin.com/in/gilles-kidjo-574351111/">
-   <img src="/assets/icons/github.png" alt="Gilles Kidjo | Github" width="24px"/>
-   </a>
-   <a href="https://www.linkedin.com/in/gilles-kidjo-574351111/">
-   <img src="/assets/icons/linkedin.png" alt="Gilles Kidjo | LinkedIn" width="24px"/>
-   </a>
-   <a href="https://www.instagram.com/gilleskidjo/">
-   <img src="/assets/icons/instagram.png" alt="Gilles Kidjo | Instagram" width="24px"/>
-   </a>
-   <a href="https://twitter.com/gilleskidjo1">
-   <img src="/assets/icons/twitter.png" alt="Gilles Kidjo | Twitter" width="24px"/>
-   </a>
-  
-  - Gael Vinou: Full stack web developer and mobile
-  > connect with him  
-   <a href="https://github.com/GV-22/">
-   <img src="/assets/icons/github.png" alt="Gael Vinou | Github" width="24px"/>
-   </a>
-   <a href="https://www.linkedin.com/in/gael-vinou-635a171a0/">
-   <img src="/assets/icons/linkedin.png" alt="Gael Vinou | LinkedIn" width="24px"/>
-   </a>
-   <a href="https://www.instagram.com/gaelvinou/">
-   <img src="/assets/icons/instagram.png" alt="Gael Vinou | Instagram" width="24px"/>
-   </a>
-   <a href="https://twitter.com/gael_vinou">
-   <img src="/assets/icons/twitter.png" alt="Gael Vinou | Twitter" width="24px"/>
-   </a>
+  [learn more about us](DEVCHAP_README.md)
