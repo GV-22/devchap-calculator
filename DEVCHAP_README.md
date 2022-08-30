@@ -46,7 +46,7 @@
 
 - Gilles Kidjo: Full stack web developer and mobile
   > connect with him  
-   <a href="https://www.linkedin.com/in/gilles-kidjo-574351111/">
+   <a href="https://github.com/gilleskidjo">
    <img src="/icons/github.png" alt="Gilles Kidjo | Github" width="24px"/>
    </a>
    <a href="https://www.linkedin.com/in/gilles-kidjo-574351111/">
