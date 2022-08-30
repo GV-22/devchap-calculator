@@ -1,10 +1,11 @@
 import 'dart:async';
 
-import '../models/pad_item.dart';
-import '../utils/event.dart';
 import 'package:expressions/expressions.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
+import '../models/pad_item.dart';
+import '../utils/event.dart';
 
 class Viewer extends StatefulWidget {
   const Viewer({Key? key}) : super(key: key);
@@ -18,9 +19,7 @@ class _ViewerState extends State<Viewer> {
   String calcul = "";
   String result = "";
   List<String> operators = ["+", "-", "×", "÷"];
-  final opRegx = RegExp(r'/+|÷|×|-');
-
-  // Map<String, dynamic> operationResult = {};
+  final opRegx = RegExp(r'\+|÷|×|-');
 
   @override
   void initState() {
@@ -49,7 +48,6 @@ class _ViewerState extends State<Viewer> {
       case PadType.number:
         if (padItem.label == ".") {
           exp = "$exp${padItem.label}";
-
           break;
         }
         // split the expression by operators
@@ -63,7 +61,7 @@ class _ViewerState extends State<Viewer> {
         final tempExp = "$exp${padItem.label}";
         // split again with the new value
         splitedByOp = tempExp.split(opRegx);
-        print("splitedByOp $splitedByOp");
+        // print("splitedByOp $splitedByOp");
         // because the last part is a string, we need to format it in num
         // and then we can format the num to string
         final lastAsNum = _formatStringToNum(splitedByOp.last);
@@ -73,12 +71,10 @@ class _ViewerState extends State<Viewer> {
           exp = formated;
         } else {
           final lastLength = splitedByOp.last.length;
-          // remove the last part of the expression (to part to be formated)
+          // replace the last part of the expression with the formated one
           exp = exp.replaceRange(exp.length - lastLength + 1, null, '');
-
           exp = "$exp$formated";
         }
-
         break;
 
       case PadType.percentage:
@@ -92,8 +88,8 @@ class _ViewerState extends State<Viewer> {
         // if there is no expression, the user cannot add an operator
         if (exp.isEmpty) return;
 
-        final lastChar = exp[exp.length - 1];
-        if (operators.contains(lastChar)) {
+        // final lastChar = exp[exp.length - 1];
+        if (operators.contains(exp.characters.last)) {
           // if the expression ends with an operator and this operator is different
           // with the new pressed, then switch the lastChar with the new operator
           // This is to avoid having two operators following each other like (2+-6)
@@ -114,7 +110,14 @@ class _ViewerState extends State<Viewer> {
           if (exp.isEmpty) return;
           // remove the last character of the expression
           exp = exp.substring(0, exp.length - 1);
-          exp.isEmpty ? result = "" : autoCompute = true;
+          if (exp.isEmpty) {
+            result = "";
+            break;
+          }
+          // exp.isEmpty ? result = "" : autoCompute = true;
+          if (!operators.contains(exp.characters.last)) {
+            autoCompute = true;
+          }
         }
         break;
       case PadType.answer:
@@ -192,13 +195,6 @@ class _ViewerState extends State<Viewer> {
     final split = result.split("e");
     final firstpart = _formatStringToNum(split[0]);
 
-    // String _formated = ""; // FIXME
-
-    // reduce the decimal part
-    // if ((NumberFormat("$firstpart").decimalDigits ?? 0) > 8) {
-    //   _formated = firstpart.toStringAsFixed(8);
-    // }
-
     if (split.length == 1) return "$firstpart";
 
     return "$firstpart" "e${split[1]}";
@@ -231,7 +227,6 @@ class _ViewerState extends State<Viewer> {
                 fontSize: isValid ? resultFontSize : 14,
               ),
             ),
-
             // calcul
             const SizedBox(height: 10),
             Text(

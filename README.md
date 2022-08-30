@@ -2,7 +2,7 @@
 
 ![Badge](https://img.shields.io/badge/build-passing-success) ![Badge](https://img.shields.io/badge/license-MIT-green) ![Badge](https://img.shields.io/badge/dart-v2.16.1-blue) ![Badge](https://img.shields.io/badge/flutter-v2.10.3-blue)
 
-A simple calculator with basic features for the _#7SEVENDAYSCHALLENGE_ enhanced by **DevChap**
+A simple calculator with basic features for the _#7SEVENDAYSCHALLENGE_ organized by **DevChap**
 
 ## Getting Started :rocket:
 
@@ -35,8 +35,8 @@ A simple calculator with basic features for the _#7SEVENDAYSCHALLENGE_ enhanced 
 
 
 ## Todo
-- Fix bug with addition operator
 - Format the result with thousand separator
+- Implement usage of the +/- operator
 
 ## About the #7SEVENDAYSCHALLENGE
 
